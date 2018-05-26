@@ -54,6 +54,7 @@ typedef enum : NSUInteger {
     CFMutableDictionaryRef _joystickStates;
     CFMutableDictionaryRef _analogSystemKeyTypes;
     BOOL                   _handlesEscapeKey;
+    BOOL                   _toggleFastForward;
 }
 
 - (instancetype)init
@@ -203,8 +204,8 @@ else dispatch_async(dispatch_get_main_queue(), blk); \
             [[self client] stepFrameForward];
             return;
         case OEGlobalButtonIdentifierFastForward :
-            SEND_ACTION2(fastForwardGameplay:, YES);
-            [[self client] fastForward:YES];
+//            SEND_ACTION2(fastForwardGameplay:, YES);
+//            [[self client] fastForward:YES];
             return;
         case OEGlobalButtonIdentifierRewind :
             SEND_ACTION2(rewindGameplay:, YES);
@@ -260,8 +261,9 @@ else dispatch_async(dispatch_get_main_queue(), blk); \
         case OEGlobalButtonIdentifierStepFrameForward :
             return;
         case OEGlobalButtonIdentifierFastForward :
-            SEND_ACTION2(fastForwardGameplay:, NO);
-            [[self client] fastForward:NO];
+            _toggleFastForward = !_toggleFastForward;
+            SEND_ACTION2(fastForwardGameplay:, _toggleFastForward);
+            [[self client] fastForward: _toggleFastForward];
             return;
         case OEGlobalButtonIdentifierRewind :
             SEND_ACTION2(rewindGameplay:, NO);
