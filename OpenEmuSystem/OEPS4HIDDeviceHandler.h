@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2011, OpenEmu Team
+ Copyright (c) 2018, OpenEmu Team
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -24,19 +24,12 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Cocoa/Cocoa.h>
+#import "OEHIDDeviceHandler.h"
 
-#if !__has_feature(objc_arc)
-#error OEGameCores will probably not function without ARC
-#endif
+NS_ASSUME_NONNULL_BEGIN
 
-#import <OpenEmuBase/NSString+UUID.h>
-#import <OpenEmuBase/OEAbstractAdditions.h>
-#import <OpenEmuBase/OEGameCore.h>
-#import <OpenEmuBase/OEGameCoreController.h>
-#import <OpenEmuBase/OERingBuffer.h>
-#import <OpenEmuBase/OESystemResponderClient.h>
-#import <OpenEmuBase/OETimingUtils.h>
-#import <OpenEmuBase/TPCircularBuffer.h>
-#import <OpenEmuBase/OEAudioBuffer.h>
-#import <OpenEmuBase/NSUserDefaults+OpenEmuSDK.h>
+@interface OEPS4HIDDeviceHandler : OEHIDDeviceHandler
+
+@end
+
+NS_ASSUME_NONNULL_END
